@@ -18,17 +18,20 @@ def read_csv_file(file_path):
     "row_count":row_count}
 def count_headline_length(data):
     #get the length of the headline
-    data_headline=data['headline']
-    length=[len(data_headline) for data_headline in data_headline]
+    data_headline = data['headline']
+    length = [len(str(headline)) for headline in data_headline]
+    
     #calculate the mean,median,stdev
-    mean=np.mean(length)
-    average_length=np.array(length)
+    mean = np.mean(length)
     median_length = np.median(length)
-    stdev_length=np.std(length)
-    return {"average_length":average_length,"mean":mean,
-    "median_length":median_length,
-    "stdev_length":stdev_length,
-    "length":length}#return the values in a dictionary form
+    stdev_length = np.std(length)
+    
+    return {
+        "mean": mean,
+        "median_length": median_length,
+        "stdev_length": stdev_length,
+        "length": length
+    }#return the values in a dictionary form
     
 
 
