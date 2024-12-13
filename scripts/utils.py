@@ -16,7 +16,7 @@ def read_csv_file(file_path):
     return {"data":data,
     "column_names":column_names,
     "row_count":row_count}
-def count_headline_length(data,mean,median_length, stdev_length,length):
+def count_headline_length(data):
     #get the length of the headline
     data_headline=data['headline']
     length=[len(data_headline) for data_headline in data_headline]
