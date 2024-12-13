@@ -24,7 +24,7 @@ def count_headline_length(data):
     mean = np.mean(length)
     median_length = np.median(length)
     stdev_length = np.std(length)
-    length_counts=pd.Series(length).value_counts()
+    length_counts=len(length)
     
     return {
         "mean": mean,
