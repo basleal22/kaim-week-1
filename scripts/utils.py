@@ -20,17 +20,17 @@ def count_headline_length(data):
     #get the length of the headline
     data_headline = data['headline']
     length = [len(str(headline)) for headline in data_headline]
-    
-    #calculate the mean,median,stdev
+    #calculate the mean,median,stdev,length_counts
     mean = np.mean(length)
     median_length = np.median(length)
     stdev_length = np.std(length)
+    length_counts=pd.Series(length).value_counts()
     
     return {
         "mean": mean,
         "median_length": median_length,
         "stdev_length": stdev_length,
-        "length": length
+        "length": length_counts
     }#return the values in a dictionary form
     
 
