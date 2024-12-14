@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from textblob import TextBlob
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 #function to read the csv file
 def read_csv_file(file_path):
     #read the file
@@ -35,8 +36,10 @@ def count_headline_length(data):
     }#return the values in a dictionary form
 #function to analyze the sentiment of the text
 def analyze_sentiment(text):
-    blob= TextBlob(str(text))
-    return {'polarity': blob.sentiment.polarity}
+    analyzer = SentimentIntensityAnalyzer()
+    sentiment_scores = analyzer.polarity_scores(text)
+    #return the sentiment scores
+    return sentiment_scores
             #polarity is a measure of the sentiment of the text (-1 to 1)
 #add sentiment category to the dataframe
 def get_sentiment_category(score):
