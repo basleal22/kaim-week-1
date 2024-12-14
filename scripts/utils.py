@@ -36,10 +36,8 @@ def count_headline_length(data):
 #function to analyze the sentiment of the text
 def analyze_sentiment(text):
     blob= TextBlob(str(text))
-    return {'polarity': blob.sentiment.polarity,
-             #polarity is a measure of the sentiment of the text (-1 to 1)
-            'subjectivity': blob.sentiment.subjectivity} 
-            #subjectivity is a measure of the sentiment of the text (0 to 1)
+    return {'polarity': blob.sentiment.polarity}
+            #polarity is a measure of the sentiment of the text (-1 to 1)
 #add sentiment category to the dataframe
 def get_sentiment_category(score):
     if score > 0:
