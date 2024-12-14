@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from textblob import TextBlob
 #function to read the csv file
 def read_csv_file(file_path):
     #read the file
@@ -32,7 +33,26 @@ def count_headline_length(data):
         "stdev_length": stdev_length,
         "length": length_counts
     }#return the values in a dictionary form
-    
+#function to analyze the sentiment of the text
+def analyze_sentiment(text):
+    blob= TextBlob(str(text))
+    return {'polarity': blob.sentiment.polarity,
+             #polarity is a measure of the sentiment of the text (-1 to 1)
+            'subjectivity': blob.sentiment.subjectivity} 
+            #subjectivity is a measure of the sentiment of the text (0 to 1)
+#add sentiment category to the dataframe
+def get_sentiment_category(score):
+    if score > 0:
+        return 'positive'
+    elif score < 0:
+        return 'negative'
+    else:
+        return 'neutral'
+
+
+
+
+
 
 
 
