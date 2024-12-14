@@ -48,6 +48,18 @@ def get_sentiment_category(score):
         return 'negative'
     else:
         return 'neutral'
+#find common phrases in the text
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.tag import pos_tag
+def common_phrases(text):
+    text = str(text).lower()
+    #most common phrases in the text
+    phrases=['fda approval','fda approval for', 'fda approval to', 'fda approval of',
+             'price target','stock split','earnings report','earnings','market share']
+    #store most common phrases in a list called 'phrase'
+    found_phrases= [phrase for phrase in phrases if phrase in text]
+    return found_phrases
 
 
 
