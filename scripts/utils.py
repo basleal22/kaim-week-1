@@ -56,7 +56,7 @@ def common_phrases(text):
     text = str(text).lower()
     #most common phrases in the text
     phrases=['fda approval','fda approval for', 'fda approval to', 'fda approval of',
-             'price target','stock split','earnings report','earnings','market share']
+             'price target','stock split','earnings report','earnings','market share','fda','stock']
     #store most common phrases in a list called 'phrase'
     found_phrases= [phrase for phrase in phrases if phrase in text]
     return found_phrases
