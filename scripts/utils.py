@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 from textblob import TextBlob
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 #function to read the csv file
 def read_csv_file(file_path):
     #read the file
