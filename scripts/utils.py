@@ -20,8 +20,8 @@ class financial_analyzer:
     def get_data(self):
         self.data = yf.download(self.ticker,start = self.start_date, end = self.end_date, period='1d')
         return self.data
-    def calculate_indicators_talib(self,data,window):#calculate indicators using talib
-        data['sma_50'] = ta.SMA(data,timeperiod=window)#simple moving average
+    def calculate_indicators_talib(self,data):#calculate indicators using talib
+        data['sma_50'] = ta.SMA(data,timeperiod=50)#simple moving average
         data['sma_200'] = ta.SMA(data,timeperiod=200)#simple moving average
         data['rsi'] = ta.RSI(data,timeperiod=14)#relative strength index
         data['ema'] = ta.EMA(data,timeperiod=200)#exponential moving average
