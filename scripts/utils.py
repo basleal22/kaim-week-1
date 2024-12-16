@@ -28,7 +28,7 @@ class financial_analyzer:
         data['macd'] = ta.MACD(data,fastperiod=12,slowperiod=26,signalperiod=9)#moving average convergence divergence
         return data
     def calculatemetrics_pynance(ticker,start_date,end_date):
-        data = pn.get_data(ticker,start_date,end_date)#get data from pynance
+        data = yf.download(ticker, start=start_date, end=end_date)#get data from yfinance
         #calculate metrics
         data['sma_50'] = data['close'].rolling(window=50).mean()#simple moving average
         data['sma_200'] = data['close'].rolling(window=200).mean()#simple moving average
