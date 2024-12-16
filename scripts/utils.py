@@ -11,7 +11,7 @@ class financial_analyzer:
         self.start_date = start_date
         self.end_date = end_date
 
-    def load_csv_files(self, folder_path):
+    def load_csv_files(self, folder_path):#load csv file from a folder
         """
         load csv file from a folder
         """
