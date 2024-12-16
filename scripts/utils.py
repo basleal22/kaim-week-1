@@ -11,13 +11,11 @@ class financial_analyzer:
         self.start_date = start_date
         self.end_date = end_date
 
-    def load_csv_files(self,ticker, folder_path):
+    def load_csv_files(self, folder_path):
         """
         load csv file from a folder
         """
-        file_name = f"{ticker.lower()}_historical_data.csv"  # Adjust the file naming pattern if needed
-        file_path = os.path.join(folder_path, file_name)
-        self.data = pd.read_csv(file_path)
+        self.data = pd.read_csv(folder_path)
         return self.data
     def get_data(self):
         self.data = yf.download(self.ticker,start = self.start_date, end = self.end_date, period='1d')
