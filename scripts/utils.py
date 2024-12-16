@@ -11,29 +11,23 @@ class financial_analyzer:
         self.start_date = start_date
         self.end_date = end_date
 
-    def load_csv_files(self, folder_path):
+    def load_csv_files(self,ticker, folder_path):
         """
-        Load all CSV files from a folder into a dictionary of DataFrames.
-        :param folder_path: Path to the folder containing CSV files
-        :return: Dictionary of DataFrames, where the key is the file name (ticker)
+        load csv file from a folder
         """
-        dataframes = {}
-        for file_name in os.listdir(folder_path):
-            if file_name.endswith('.csv'):
-                ticker = file_name.split('.')[0]  # Extract the ticker from the file name
-                file_path = os.path.join(folder_path, file_name)  # Full file path
-                dataframes[ticker] = pd.read_csv(file_path)
-                print(f"Loaded data for {ticker} from {file_name}")
-        return dataframes
+        file_name = f"{ticker.lower()}_historical_data.csv"  # Adjust the file naming pattern if needed
+        file_path = os.path.join(folder_path, file_name)
+        self.data = pd.read_csv(file_path)
+        return self.data
     def get_data(self):
         self.data = yf.download(self.ticker,start = self.start_date, end = self.end_date, period='1d')
         return self.data
     def calculate_indicators_talib(self,data,window):#calculate indicators using talib
-        data['sma_50'] = ta.SMA(data,timeperiod=window)
-        data['sma_200'] = ta.SMA(data,timeperiod=200)
-        data['rsi'] = ta.RSI()
-        data['ema'] = ta.EMA()
-        data['macd'] = ta.MACD()
+        data['sma_50'] = ta.SMA(data,timeperiod=window)#simple moving average
+        data['sma_200'] = ta.SMA(data,timeperiod=200)#simple moving average
+        data['rsi'] = ta.RSI(data,timeperiod=14)#relative strength index
+        data['ema'] = ta.EMA(data,timeperiod=200)#exponential moving average
+        data['macd'] = ta.MACD(data,fastperiod=12,slowperiod=26,signalperiod=9)#moving average convergence divergence
         return data
     def calculatemetrics_pynance(self,ticker,start_date,end_date):
         data = pn.get_data(ticker,start_date,end_date)#get data from pynance
