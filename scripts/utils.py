@@ -72,7 +72,29 @@ def timeseries_analysis(data):
     plt.ylabel('number of articles')
     plt.grid(True)
     plt.show()
-    return monthly_counts 
+    return monthly_counts
+def spike_analysis(data):#detect spikes in the data using moving average
+    data['date'] =pd.to_datetime(data['date'])
+    data.set_index('date',inplace=True) #set the date as the index
+    monthly_counts = data.resample('M').size()
+    #calculate the moving average
+    monthly_moving_average = monthly_counts.rolling(window=7).mean()
+    #plot the data and the moving average
+    plt.figure(figsize=(10,6))
+    monthly_counts.plot()
+    monthly_moving_average.plot()
+    plt.title('Number of articles per month')
+    plt.xlabel('date')
+    plt.ylabel('number of publications')
+    plt.grid(True)
+    plt.show()
+    threshold = monthly_counts.quantile(0.95)#top 5% of the data
+    spikes = monthly_counts[monthly_counts> threshold]
+    print(spikes)
+    return monthly_counts,monthly_moving_average
+
+
+
 
 
 
