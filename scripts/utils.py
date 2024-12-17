@@ -92,6 +92,17 @@ def spike_analysis(data):#detect spikes in the data using moving average
     spikes = monthly_counts[monthly_counts> threshold]
     print(spikes)
     return monthly_counts,monthly_moving_average
+def plot_spikes(data):
+    monthly_counts,monthly_moving_average = spike_analysis(data)
+    plt.figure(figsize=(10,6))
+    monthly_counts.plot()
+    monthly_moving_average.plot()
+    plt.title('Number of articles per month')
+    plt.xlabel('date')
+    plt.ylabel('number of publications')
+    plt.grid(True)
+    plt.show()
+
 
 
 
