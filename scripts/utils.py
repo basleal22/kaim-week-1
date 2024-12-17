@@ -53,6 +53,3 @@ class financial_analyzer:
         plt.plot(data['macd'],label='MACD')
         plt.legend()
         plt.show()
-
-
-
