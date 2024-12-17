@@ -88,7 +88,7 @@ def spike_analysis(data):#detect spikes in the data using moving average
     plt.show()
     threshold = monthly_counts.quantile(0.95)#top 5% of the data
     spikes = monthly_counts[monthly_counts> threshold]
-    print(spikes)
+    print('detected spikes in the data:', spikes)
     return monthly_counts,monthly_moving_average
 def plot_spikes(data):
     monthly_counts,monthly_moving_average = spike_analysis(data)
