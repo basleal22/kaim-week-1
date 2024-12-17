@@ -30,15 +30,15 @@ class financial_analyzer:
     def calculatemetrics_pynance(ticker,start_date,end_date):
         data = yf.download(ticker, start=start_date, end=end_date)#get data from yfinance
         #calculate metrics
-        data['sma_50'] = data['close'].rolling(window=50).mean()#simple moving average
-        data['sma_200'] = data['close'].rolling(window=200).mean()#simple moving average
-        data['rsi'] = data['close'].rsi()#relative strength index
-        data['ema'] = data['close'].ema()#exponential moving average
-        data['macd']= data['close'].macd()#moving average convergence divergence
+        data['sma_50'] = data['Close'].rolling(window=50).mean()#simple moving average
+        data['sma_200'] = data['Close'].rolling(window=200).mean()#simple moving average
+        data['rsi'] = data['Close'].rsi()#relative strength index
+        data['ema'] = data['Close'].ema()#exponential moving average
+        data['macd']= data['Close'].macd()#moving average convergence divergence
         return data
     def plot_data(self,data):
         plt.figure(figsize=(14,7))
-        plt.plot(data['close'],label='Close')
+        plt.plot(data['Close'],label='Close')
         plt.plot(data['sma_50'],label='SMA 50')
         plt.plot(data['sma_200'],label='SMA 200')
         plt.plot(data['rsi'],label='RSI')
