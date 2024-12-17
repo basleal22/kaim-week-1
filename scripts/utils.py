@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from textblob import TextBlob
+import matplotlib.pyplot as plt
 #function to read the csv file
 def read_csv_file(file_path):
     #read the file
@@ -59,6 +60,19 @@ def common_phrases(text):
     #store most common phrases in a list called 'phrase'
     found_phrases= [phrase for phrase in phrases if phrase in text]
     return found_phrases
+def timeseries_analysis(data):
+    data['date'] =pd.to_datetime(data['date'])
+    data.set_index('date',inplace=True) #set the date as the index
+    #resample the data by month and count number of articles per month
+    monthly_counts = data.resample('M').size()
+    plt.figure(figsize=(10,6))
+    monthly_counts.plot()
+    plt.title('Number of articles per month')
+    plt.xlabel('date')
+    plt.ylabel('number of articles')
+    plt.grid(True)
+    plt.show()
+    return monthly_counts 
 
 
 
