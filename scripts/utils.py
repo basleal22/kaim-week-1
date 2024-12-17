@@ -24,7 +24,7 @@ class financial_analyzer:
         data['sma_50'] = ta.SMA(data['Close'],timeperiod=50)#simple moving average
         data['sma_200'] = ta.SMA(data['Close'],timeperiod=200)#simple moving average
         data['rsi'] = ta.RSI(data['Close'],timeperiod=14)#relative strength index
-        data['ema'] = ta.EMA(data['Close'],timeperiod=200)#exponential moving average
+        data['ema'] = ta.EMA(data['Close'],timeperiod=50)#exponential moving average
         # Unpack MACD values
         macd, signal, hist = ta.MACD(data['Close'], 
                                     fastperiod=12, 
