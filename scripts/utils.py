@@ -21,11 +21,11 @@ class financial_analyzer:
         self.data = yf.download(self.ticker,start = self.start_date, end = self.end_date, period='1d')
         return self.data
     def calculate_indicators_talib(data):#calculate indicators using talib
-        data['sma_50'] = ta.SMA(data['close'],timeperiod=50)#simple moving average
-        data['sma_200'] = ta.SMA(data['close'],timeperiod=200)#simple moving average
-        data['rsi'] = ta.RSI(data['close'],timeperiod=14)#relative strength index
-        data['ema'] = ta.EMA(data['close'],timeperiod=200)#exponential moving average
-        data['macd'] = ta.MACD(data['close'],fastperiod=12,slowperiod=26,signalperiod=9)#moving average convergence divergence
+        data['sma_50'] = ta.SMA(data['Close'],timeperiod=50)#simple moving average
+        data['sma_200'] = ta.SMA(data['Close'],timeperiod=200)#simple moving average
+        data['rsi'] = ta.RSI(data['Close'],timeperiod=14)#relative strength index
+        data['ema'] = ta.EMA(data['Close'],timeperiod=200)#exponential moving average
+        data['macd'] = ta.MACD(data['Close'],fastperiod=12,slowperiod=26,signalperiod=9)#moving average convergence divergence
         return data
     def calculatemetrics_pynance(ticker,start_date,end_date):
         data = yf.download(ticker, start=start_date, end=end_date)#get data from yfinance
