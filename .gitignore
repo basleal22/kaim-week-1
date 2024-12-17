@@ -36,18 +36,18 @@ jupyter_notebook_config.py
 *.nbconvert.ipynb
 
 # Data files
-data/
-*.csv
-*.xlsx
-*.xls
-*.db
-*.sqlite
-*.json
-*.xml
-*.parquet
-*.feather
-*.pkl
-*.h5
+#data/
+#*.csv
+#*.xlsx
+#*.xls
+#*.db
+#*.sqlite
+#*.json
+#*.xml
+#*.parquet
+#*.feather
+#*.pkl
+#*.h5
 
 # Large files
 *.zip
