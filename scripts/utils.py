@@ -74,8 +74,6 @@ def timeseries_analysis(data):
     plt.show()
     return monthly_counts
 def spike_analysis(data):#detect spikes in the data using moving average
-    data['date'] =pd.to_datetime(data['date'])
-    data.set_index('date',inplace=True) #set the date as the index
     monthly_counts = data.resample('M').size()
     #calculate the moving average
     monthly_moving_average = monthly_counts.rolling(window=7).mean()
