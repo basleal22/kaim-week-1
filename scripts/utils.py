@@ -3,11 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt 
 
 class CorrelationAnalyzer:
-    def __init__(self, ticker, start_date, end_date):
-        self.ticker = ticker
-        self.start_date = start_date
-        self.end_date = end_date
-    
+    def __init__(self):
+        pass
     def sentiment_correlation(self, datafile):
        #read data
         data = pd.read_csv(datafile)
@@ -26,16 +23,7 @@ class CorrelationAnalyzer:
         
         return data
 
-    def get_sentiment(self, text):
-        """
-        Analyzes the sentiment of the given text using TextBlob.
-
-        Parameters:
-            text (str): The text to analyze.
-
-        Returns:
-            float: The sentiment polarity (-1 to 1).
-        """
+    def get_sentiment(self, text):#sentiment of the text
         analysis = TextBlob(str(text))  # Convert to string and analyze
         return analysis.sentiment.polarity  # Returns value between -1 and 1
 
