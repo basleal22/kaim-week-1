@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 class CorrelationAnalyzer:
     def __init__(self):
         pass
-    def sentiment_correlation(self, datafile):
+    def sentiment_correlation(self, data):
        #read data
-        data = pd.read_csv(datafile)
+        
         
         # Normalize the date
         data['date'] = pd.to_datetime(data['date'], format='%Y-%m-%d', errors='coerce')
