@@ -12,9 +12,6 @@ class CorrelationAnalyzer:
         # Normalize the date
         data['date'] = pd.to_datetime(data['date'], format='%Y-%m-%d', errors='coerce')
         
-        # Drop rows with invalid dates
-        data = data.dropna(subset=['date'])
-        
         # Only keep relevant columns: 'headline', 'date', and 'stock'
         data = data[['headline', 'date', 'stock']]
         
@@ -58,6 +55,6 @@ class CorrelationAnalyzer:
         # Calculate correlation
         correlation = combined_data['daily_return'].corr(combined_data['sentiment'])
         print(f"Correlation between news sentiment and daily stock returns: {correlation:.2f}")
-
+        
         # Return the results
         return correlation, combined_data
