@@ -59,8 +59,5 @@ class CorrelationAnalyzer:
         correlation = combined_data['daily_return'].corr(combined_data['sentiment'])
         print(f"Correlation between news sentiment and daily stock returns: {correlation:.2f}")
 
-        # Step 6: Plot the results
-        self.plot_sentiment_correlation(combined_data)
-
         # Return the results
         return correlation, combined_data
