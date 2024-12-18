@@ -11,6 +11,7 @@ class CorrelationAnalyzer:
         
         # Normalize the date
         data['date'] = pd.to_datetime(data['date'], format='%Y-%m-%d', errors='coerce')
+        data['date'] = data['date'].dt.tz_localize(None)
         
         # Only keep relevant columns: 'headline', 'date', and 'stock'
         data = data[['headline', 'date', 'stock']]
